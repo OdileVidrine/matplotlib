@@ -1933,8 +1933,10 @@ class Parser:
      \updownarrowbar \twoheaduparrow \rightarrowbar \updownarrows
      \barleftarrow \mapsfrom \mapsdown \mapsup \Ldsh \Rdsh
      """.split())
+    
+    _dropsub_symbols = set(r'\int \oint \iint \oiint \iiint \oiiint \iiiint'.split())
 
-    _spaced_symbols = _binary_operators | _relation_symbols | _arrow_symbols
+    _spaced_symbols = _binary_operators | _relation_symbols | _arrow_symbols | _dropsub_symbols
 
     _punctuation_symbols = set(r', ; . ! \ldotp \cdotp'.split())
 
@@ -1944,8 +1946,6 @@ class Parser:
        '''.split())
 
     _overunder_functions = set("lim liminf limsup sup max min".split())
-
-    _dropsub_symbols = set(r'\int \oint \iint \oiint \iiint \oiiint \iiiint'.split())
 
     _fontnames = set("rm cal it tt sf bf bfit "
                      "default bb frak scr regular".split())
