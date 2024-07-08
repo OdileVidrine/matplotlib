@@ -2,6 +2,7 @@ import functools
 import itertools
 import logging
 import math
+import warnings
 from numbers import Integral, Number, Real
 
 import re
@@ -6971,6 +6972,11 @@ such objects
 
         if histtype == 'barstacked' and not stacked:
             stacked = True
+
+        for xi in x:
+            if isinstance(xi, str):
+                warnings.warn("Categorical data should not be displayed in a histogram,"
+                              " consider a bar graph instead")
 
         # Massage 'x' for processing.
         x = cbook._reshape_2D(x, 'x')
